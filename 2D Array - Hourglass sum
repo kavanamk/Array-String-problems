@@ -1,0 +1,44 @@
+arr = [
+    [1, 1, 1, 0, 0, 0],
+    [0, 1, 0, 0, 0, 0],
+    [1, 1, 1, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0]
+]
+lb = 0
+lb1 = 0
+lb2 = 2
+mid1 = 1
+mid2 = 1
+ub = 3
+x = 0
+sumlist = list()
+while x <= 15:
+    x += 1
+    temp = list()
+    for i in range(lb, ub):
+        temp.append(arr[lb1][i])
+
+    temp.append(arr[mid1][mid2])
+    mid2 += 1
+
+    for i in range(lb, ub):
+        temp.append(arr[lb2][i])
+
+    ub += 1
+    lb += 1
+
+    if ub == 7:
+        lb=0
+        ub=3
+        mid1 += 1
+        mid2 = 0
+        lb1+=1
+        lb2+=1
+    print(x)
+    print(temp)
+
+    sumlist.append(sum(temp))
+
+print(max(sumlist))
