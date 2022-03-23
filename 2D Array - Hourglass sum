@@ -33,7 +33,7 @@ while x <= 15:
         lb=0
         ub=3
         mid1 += 1
-        mid2 = 0
+        mid2 = 1
         lb1+=1
         lb2+=1
     print(x)
