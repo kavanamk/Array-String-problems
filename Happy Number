@@ -5,24 +5,22 @@ Repeat the process until the number equals 1 (where it will stay), or it loops e
 Those numbers for which this process ends in 1 are happy."""
 
 def sum_of_squares(n):
-        str_num=str(n)
-        ans=0
-        for i in range(0, len(str_num)):
-            ans += int(str_num[i])**2
-        return ans
-
-def isHappy(n):
+        return str(sum(int(c) ** 2 for c in str(n)))
+    
+class Solution(object):
+    def isHappy(self, n):
         hashmap=list()
-        if n == 1 or n % 10 == 0:
-            return true
-        else:
-            n=sum_of_squares(n)
-            if n not in hashmap:
-                hashmap+=n
-            elif n == 1 or n % 10 == 0:
-                return true
+        str_n=str(n)
+        while(len(hashmap)==len(set(hashmap))):
+            str_n=sum_of_squares(str_n)
+            if str_n not in hashmap:
+                hashmap.append(str_n)
             else:
-                return false
-                
-isHappy(19)
-
+                break
+            if '1' in hashmap:
+                n=1
+                break
+        if n == 1:
+            return True
+        else:
+            return False
