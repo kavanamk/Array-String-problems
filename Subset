@@ -1,0 +1,10 @@
+class Solution(object):
+    def subsetsWithDup(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: List[List[int]]
+        """
+        output=[[]]
+        for i in nums:
+            output += [lst + [i] for lst in output]
+        return output
