@@ -1,0 +1,35 @@
+class Solution(object):
+    def singleNumber(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: int
+        """
+        set_nums=list(set(nums))
+        ans=0
+        #print(set_nums)
+
+        for sn in set_nums:
+            nums.remove(sn)
+            
+        for sn in set_nums:
+            if sn not in nums:
+                ans=sn
+        return ans
+        
+ #solution 1 runtime: 1943 ms      
+ #solution 2 runtime: 574ms
+ 
+ class Solution(object):
+    def singleNumber(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: int
+        """
+        set_nums=list(set(nums))
+        ans=0
+        #print(set_nums)
+
+        for sn in set_nums:
+            nums.remove(sn)
+        ans=list(set(set_nums)-set(nums))
+        return ans[0]
