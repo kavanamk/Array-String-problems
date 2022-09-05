@@ -15,11 +15,13 @@ class Solution(object):
         temp=''
         temp2=''
         l=[]
-        for i in range(0,n):
+        l.append(s[0])
+        for i in range(0,n): 
             for j in range(n,1,-1):
                 temp=s[i:j]
                 if(len(temp)>=1):
                     l.append(temp)
+                    
         maxlen=1
         ans=''
         for x in l:
