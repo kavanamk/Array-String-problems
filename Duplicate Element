@@ -1,0 +1,20 @@
+class Solution(object):
+    def containsDuplicate(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: bool
+        """
+        if len(nums)==len(set(nums)):
+            return False    
+        else:
+            return True
+            
+            
+ #dictionary O(n)
+ 
+ 
+ dic = {}
+        for n in nums:
+            if n in dic: return True
+            else: dic[n] = 1
+        return False
