@@ -1,15 +1,17 @@
-txt = "pwwkew"
+txt = "abcabcbb"
 n=len(txt)
 l=[]
 subs=''
+maxsub=[]
 
-for i in range(0,n-1):
+for i in range(0,n):
     if txt[i] not in l:
         l.append(txt[i])
         subs+=txt[i]
     else:
+        maxsub.append(len(subs))
         subs=''+txt[i]
+        l=[]
 
-print(subs)
-
-#op='wke'
+print(maxsub)
+print(max(maxsub))
