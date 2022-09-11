@@ -1,0 +1,15 @@
+txt = "pwwkew"
+n=len(txt)
+l=[]
+subs=''
+
+for i in range(0,n-1):
+    if txt[i] not in l:
+        l.append(txt[i])
+        subs+=txt[i]
+    else:
+        subs=''+txt[i]
+
+print(subs)
+
+#op='wke'
