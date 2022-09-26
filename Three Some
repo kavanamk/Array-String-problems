@@ -1,0 +1,24 @@
+#Given an integer array nums, return all the triplets [nums[i], nums[j], nums[k]] 
+#such that i != j, i != k, and j != k, and nums[i] + nums[j] + nums[k] == 0.
+
+#Notice that the solution set must not contain duplicate triplets.
+
+nums = [-1,0,1,2,-1,-4]
+
+nums=list((set(nums)))
+tinylist=[]
+ans=[]
+n=len(nums)
+for i in range(0,n-1):
+    for j in range(i+1,n):
+        if nums[i]!=nums[j] and (-1*(nums[i]+nums[j])) in nums and nums[i]!=(-1*(nums[i]+nums[j])) and nums[j]!=(-1*(nums[i]+nums[j])) :
+            tinylist.append(nums[i])
+            tinylist.append(nums[j])
+            tinylist.append((-1*(nums[i]+nums[j])))
+            tinylist.sort()
+            if tinylist not in ans:
+                ans.append(tinylist)
+            tinylist=[]
+
+print(ans)
+    
