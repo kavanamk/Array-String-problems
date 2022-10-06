@@ -1,0 +1,31 @@
+def diffString(str1,str2):
+    n=0
+    for s in str1:
+        if s not in str2:
+            n+=1
+    if n>1:
+        return False
+    else:
+        return True
+
+def laddderLength(beginWord, endWord, wordList):
+    if endWord not in wordList:
+        return 0
+    chainlen=1
+    for word in wordList:
+        if word == endWord:
+            break
+        if diffString(beginWord, word):
+            chainlen+=1
+            beginWord=word
+            print(str(chainlen)+" "+beginWord+"\n")
+        else:
+            beginWord=word
+            chainlen=1
+            print(str(chainlen)+" "+beginWord+"\n")
+        
+    return chainlen+1
+    
+
+wordList = ["hot","dot","dog","lot","log","cog"]
+print(laddderLength("hit", "cog", wordList))
