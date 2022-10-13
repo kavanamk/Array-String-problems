@@ -14,43 +14,73 @@ while('[' in s):
 
 from collections import deque
 
-stri = "2[abc]3[cd]ef"
-stack=deque()
-for x in reversed(stri):
-    stack.append(x)
-    
-print(stack)
-
 def lastocc(l):
     ind=0
     for x in reversed(l):
         ind+=1
         if x=='[':
             return len(l)-ind
-
-ans=deque()
-temp=deque()
-print(temp)
-ss=''
-s=[]
-n=1
-while len(stack)!=0:
-    e=stack.pop()
-    print(e)
-    if e==']':
-        openbrac_pos=lastocc(s)
-        char=s[openbrac_pos+1:]
-        xn=s[openbrac_pos-1]
-        ss=int(xn)*char
-        s=s[:openbrac_pos-1]+ss
-    elif e=='[':
-        s.append(e)
-    elif e.isnumeric():
-        s.append(e)
-        n=int(e)
-    else:
-        s.append(e)
         
-    print(s)
-print(s)        
+def retN(s):
 
+    si_num='0'
+    cutindex=0
+    for j in reversed(s):
+        if(j.isnumeric()):
+            cutindex+=1
+        else:
+            break
+    s=s[-cutindex:]
+    sz=''
+    i=0
+    for x in s:
+        sz+=x
+    print(sz)
+    xn=int(sz)
+    return xn,len(sz)
+
+class Solution(object):
+    def decodeString(self, s):
+        """
+        :type s: str
+        :rtype: str
+        """    
+    
+    
+        stack=deque()
+        for x in reversed(s):
+            stack.append(x)
+            
+        
+        
+        ans=deque()
+        temp=deque()
+        
+        ss=''
+        sf=[]
+        n=1
+        while len(stack)!=0:
+            e=stack.pop()
+            
+            if e==']':
+                openbrac_pos=lastocc(sf)
+                char=sf[openbrac_pos+1:]
+                xn,lenxn=retN(sf[:openbrac_pos])
+                ss=int(xn)*char
+                sf=sf[:openbrac_pos-lenxn]+ss
+            elif e=='[':
+                sf.append(e)
+            elif e.isnumeric():
+                sf.append(e)
+                n=int(e)
+            else:
+                sf.append(e)
+                
+              
+        sx=''
+        i=0
+        for x in sf:
+            sx+=x
+        
+        return sx
+        
