@@ -1,3 +1,4 @@
+#brute force
 s = "3[a]2[bc]"
 while('[' in s):
     openbrac_pos=s.rindex('[')
@@ -8,3 +9,35 @@ while('[' in s):
     appendix=int(multiple)*char
     s=s[:openbrac_pos-1]+appendix+s[closebrac_pos+1:]
     print(s)
+
+#using stack/recursion
+
+from collections import deque
+
+s = "3[a]2[bcc]"
+stack=deque()
+for x in reversed(s):
+    stack.append(x)
+    
+print(stack)
+
+ans=deque()
+temp=deque()
+print(temp)
+ss=''
+n=1
+while len(stack)!=0:
+    e=stack.popleft()
+    if e==']':
+        pass
+    elif e=='[':
+        pass
+    elif e.isnumeric():
+        n=int(e)
+        ans.appendleft(n*temp)
+        temp=deque([])
+    else:
+        temp.appendleft(e)
+        
+    print(ans)
+print(ans)        
