@@ -1,7 +1,8 @@
-s = "3[a2[c]]"
+s = "3[a]2[bc]"
 while('[' in s):
-    closebrac_pos=s.index(']')
     openbrac_pos=s.rindex('[')
+    ss=s[openbrac_pos:]
+    closebrac_pos=len(s[:openbrac_pos])+ss.index(']')
     char=s[openbrac_pos+1:closebrac_pos]
     multiple=s[openbrac_pos-1]
     appendix=int(multiple)*char
