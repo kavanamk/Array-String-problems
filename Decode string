@@ -14,30 +14,43 @@ while('[' in s):
 
 from collections import deque
 
-s = "3[a]2[bcc]"
+stri = "2[abc]3[cd]ef"
 stack=deque()
-for x in reversed(s):
+for x in reversed(stri):
     stack.append(x)
     
 print(stack)
+
+def lastocc(l):
+    ind=0
+    for x in reversed(l):
+        ind+=1
+        if x=='[':
+            return len(l)-ind
 
 ans=deque()
 temp=deque()
 print(temp)
 ss=''
+s=[]
 n=1
 while len(stack)!=0:
-    e=stack.popleft()
+    e=stack.pop()
+    print(e)
     if e==']':
-        pass
+        openbrac_pos=lastocc(s)
+        char=s[openbrac_pos+1:]
+        xn=s[openbrac_pos-1]
+        ss=int(xn)*char
+        s=s[:openbrac_pos-1]+ss
     elif e=='[':
-        pass
+        s.append(e)
     elif e.isnumeric():
+        s.append(e)
         n=int(e)
-        ans.appendleft(n*temp)
-        temp=deque([])
     else:
-        temp.appendleft(e)
+        s.append(e)
         
-    print(ans)
-print(ans)        
+    print(s)
+print(s)        
+
