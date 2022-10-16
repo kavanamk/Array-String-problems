@@ -5,6 +5,47 @@ class Solution(object):
         :type num2: str
         :rtype: str
         """
-        n1=int(num1)
-        n2=int(num2)
-        return str(n1*n2)
+        if len(num1)>=len(num2):
+            str1=num1
+            str2=num2
+        else:
+            str1=num2
+            str2=num1
+        
+        carry=0
+        str3=''
+        addlist=[]
+        zeropadding=0
+        itercount=0
+        
+        for m in reversed(str2):
+            
+            str3+='0'*zeropadding
+            for n in reversed(str1):
+                itercount+=1
+                local=(int(m)*int(n))+carry
+                
+                if local>=10:
+                    str3+= str(local%10)
+                    carry=local//10
+                else:
+                    str3+=str(local)
+                    carry=0
+                if itercount==len(str1):
+                    str3+=str(carry)
+                    itercount=0
+            
+            zeropadding+=1
+            addlist.append(str3[::-1])
+            str3=''
+            carry=0
+         
+        ans=0
+        print(addlist)     
+        for lst in addlist:
+            ans+=int(lst)
+        
+           
+        
+        return str(ans)
+        
