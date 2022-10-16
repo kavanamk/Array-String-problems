@@ -1,0 +1,39 @@
+def swap(x,y):
+    temp=x
+    x=y
+    y=temp
+    return x,y
+
+nums=[1,5,8,4,7,6,5,3,1]
+        n=len(nums)
+        dec_elem=0
+        dec_elem_index=0
+        
+        for i in range(n-1,1,-1):
+            if nums[i]>nums[i-1]:
+                dec_elem=nums[i-1]
+                dec_elem_index=i-1
+                break
+        
+        
+        greater_num=0
+        
+        l1=len(nums[:dec_elem_index+1])
+        
+        l2=0
+        for num in nums[dec_elem_index+1:]:
+            
+            if num>dec_elem:
+                greater_num=num
+                l2=nums[dec_elem_index+1:].index(greater_num)
+        
+        greater_num_index=l1+l2
+        
+        temp=nums[dec_elem_index]
+        nums[dec_elem_index]=nums[greater_num_index]
+        nums[greater_num_index]=temp
+        nums2=nums[dec_elem_index+1:]
+        nums=nums[:dec_elem_index+1]+nums2[::-1]
+        
+        print(nums)
+    
