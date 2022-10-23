@@ -1,0 +1,14 @@
+file = "abc"
+queries = [1,2,1]
+output=[]
+filetemp=file
+
+for query in queries:
+    filetemp=filetemp[query:]
+    if filetemp=="":
+        output.append(min(query,len(file)))
+        output.append(0)
+        break
+    else:
+        output.append(query)
+print(output)
