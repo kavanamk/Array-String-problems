@@ -1,0 +1,45 @@
+nums =  [0,1,50]
+lower = 0
+upper = 99
+
+def missRange(nums,lower,upper):
+    output=[]
+    duplex=[]
+    n=len(nums)
+    
+    if nums==[]:
+        diff=upper-lower
+        if diff==0:
+            output.append(str(lower))
+        else:
+            s=str(lower)+"->"+str(upper)
+            output.append(s)
+        print("here")
+        return output
+    
+    if lower<nums[0]:
+        nums.append(lower)
+    if upper>nums[n-1]:
+        nums.append(upper+1)
+    
+    for i in range(len(nums)-1):
+        duplex.append(nums[i])
+        duplex.append(nums[i+1])
+        #print(duplex)
+        diff=abs(duplex[1]-duplex[0])
+        if diff==1:
+            pass
+        elif diff==2:
+            output.append(str(duplex[0]+1))
+        else:
+            s=str(duplex[0]+1)+"->"+str(duplex[1]-1)
+            output.append(s)
+        duplex=[]
+    
+    
+    return output
+    
+print(missRange(nums, lower, upper))
+
+
+# does not handle -ve nums
