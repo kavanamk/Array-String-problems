@@ -1,0 +1,16 @@
+s='abcd'
+indices=[0,2]
+sources=["a","cd"]
+targets=["eee","fff"]
+n=len(s)
+indices.append(n)
+#input is adcd
+#output="eeebfff"
+output=''
+for i in range(len(indices)-1):
+    startindex=indices[i]
+    endindex=startindex+len(sources[i])
+    output+=targets[i]
+    output+=s[endindex:indices[i+1]]
+    
+print(output)
