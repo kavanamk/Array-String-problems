@@ -1,0 +1,38 @@
+"""
+An Anagram is a word or phrase formed by rearranging the letters of a different word or phrase, 
+typically using all the original letters exactly once.
+
+Example 1:
+
+Input: s = "anagram", t = "nagaram"
+Output: true
+
+"""
+
+class Solution(object):
+    def isAnagram(self, s, t):
+        """
+        :type s: str
+        :type t: str
+        :rtype: bool
+        """
+        dicts={}
+        dictt={}
+        
+        for letter in s:
+            if letter not in dicts:
+                dicts[letter]=1
+            else:
+                dicts[letter]+=1
+        
+        for letter in t:
+            if letter not in dictt:
+                dictt[letter]=1
+            else:
+                dictt[letter]+=1
+        
+        
+        if dicts==dictt:
+            return True
+        return False
+        
