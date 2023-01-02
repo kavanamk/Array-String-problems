@@ -1,35 +1,24 @@
-def isValid(s):
-    stack=[]
-    if len(s)%2 !=0:
-        return False
-    
-    for bracket in s:
-        if bracket=='(':
-            stack.append('(')
-        if bracket==')':
-            if len(stack)==0:
-                pass
-            elif not stack.pop()=='(' :
+class Solution(object):
+    def isValid(self, s):
+        """
+        :type s: str
+        :rtype: bool
+        """
+        # Stack for left symbols
+        stack = []
+        # Loop for each character of the string
+        for c in s:
+            # If left symbol is encountered
+            if c in ['(', '{', '[']:
+                stack.append(c)
+            # If right symbol is encountered
+            elif c == ')' and len(stack) != 0 and stack[-1] == '(':
+                stack.pop()
+            elif c == '}' and len(stack) != 0 and stack[-1] == '{':
+                stack.pop()
+            elif c == ']' and len(stack) != 0 and stack[-1] == '[':
+                stack.pop()
+            # If none of the valid symbols is encountered
+            else:
                 return False
-        
-        if bracket=='{':
-            stack.append('{')
-        if bracket=='}':
-            if len(stack)==0:
-                pass
-            elif not stack.pop()=='{' :
-                return False
-        
-        if bracket=='[':
-            stack.append('[')
-        if bracket==']':
-            if len(stack)==0:
-                pass
-            elif not stack.pop()=='[' :
-                return False
-    if len(stack)!=0:
-        return False
-    return True
-
-
-print(isValid(s))
+        return stack == []
