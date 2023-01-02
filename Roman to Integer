@@ -1,0 +1,26 @@
+class Solution(object):
+    def romanToInt(self, s):
+        """
+        :type s: str
+        :rtype: int
+        """
+        roman={}
+
+        roman['I']=             1
+        roman['V'] =            5
+        roman['X'] =            10
+        roman['L'] =          50
+        roman['C'] =            100
+        roman['D'] =            500
+        roman['M'] =            1000
+
+        s=s.replace('IV', 'IIII').replace('IX', 'VIIII')
+        s=s.replace('XL','XXXX').replace('XC', 'LXXXX').replace('CD','CCCC')
+        s=s.replace('CM','DCCCC')
+        ans=0
+        
+        
+        for roman_num in s:
+            ans+=roman[roman_num]
+
+        return ans
