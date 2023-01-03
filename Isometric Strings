@@ -1,0 +1,21 @@
+s = "foo"
+t = "bar"
+
+def temp(s,t):
+    tindex=0
+    d={}
+    for i in range(0,len(s)):
+        if s[i] not in list(d.keys()):
+            d[s[i]]=t[i]
+        else:
+            if d[s[i]]!=t[i]:
+                return False
+        i+=1
+    s1=set(list(s))
+    s2=set(list(t))
+    if len(s1)!=len(s2):
+        return False
+   
+    return True
+
+print(temp(s,t))
