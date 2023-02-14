@@ -1,0 +1,18 @@
+matrix=[[1,2,3,4],[5,6,7,8],[9,10,11,12]]
+left,top=0,1
+n,right=len(matrix[0]),len(matrix[0])
+m,bottom=len(matrix),len(matrix)
+
+for i in range(m):
+    for j in range(n):
+        pass
+       # print(matrix[i][j])
+
+for i in range(left,right):
+    print(matrix[top-1][i])
+for i in range(top,bottom):
+    print(matrix[i][right-1])
+for i in range(right-2,left,-1):
+    print(matrix[m-1][i])
+for i in range(bottom-1,top-1,-1):
+    print(matrix[i][0])
