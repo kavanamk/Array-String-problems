@@ -1,0 +1,13 @@
+class Solution(object):
+    def buildArray(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: List[int]
+        """
+        output=[]
+    
+        for i in nums:
+            output.append(nums[i])
+        
+        return output
+        
