@@ -1,0 +1,32 @@
+class Solution(object):
+    def swap(self, nums, i, j):
+        temp = nums[i]
+        nums[i] = nums[j]
+        nums[j] = temp
+
+    def removeElement(self, nums, val):
+        """
+        :type nums: List[int]
+        :type val: int
+        :rtype: int
+        """
+        k = 0
+        for i in range(len(nums)):
+            if nums[i] != val:
+                nums[k] = nums[i]
+                k += 1
+
+        # The elements after k can be anything; setting them to 0 for clarity (optional)
+        for i in range(k, len(nums)):
+            nums[i] = 0
+
+        return k
+
+# Example usage:
+nums = [3, 2, 2, 3]
+val = 3
+
+solution = Solution()
+k = solution.removeElement(nums, val)
+print(k)  # Output should be 2
+print(nums)  # Output should be [2, 2, 0, 0]
