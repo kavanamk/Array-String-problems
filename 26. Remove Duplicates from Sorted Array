@@ -1,0 +1,19 @@
+class Solution(object):
+    def removeDuplicates(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: int
+        """
+        if not nums:
+            return 0
+
+        # Initialize the pointer for the place to insert the next unique element
+        insert_pos = 1
+        
+        for i in range(1, len(nums)):
+            # If the current element is different from the previous one, it's unique
+            if nums[i] != nums[i - 1]:
+                nums[insert_pos] = nums[i]
+                insert_pos += 1
+        
+        return insert_pos26. Remove Duplicates from Sorted Array
