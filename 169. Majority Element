@@ -1,0 +1,22 @@
+class Solution(object):
+    def majorityElement(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: int
+        """
+        max_key=nums[0]
+        max_val=1
+        d={}
+        for num in nums:
+            if num not in d:
+                d[num]=1
+            else:
+                d[num]+=1
+            if d[num]>max_val:
+                max_val=d[num]
+                max_key= num
+        return max_key
+
+
+#O(n)
+        
