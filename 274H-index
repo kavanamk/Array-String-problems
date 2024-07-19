@@ -1,0 +1,27 @@
+class Solution(object):
+    def hIndex(self, citations):
+        """
+        :type citations: List[int]
+        :rtype: int
+        """
+        citations.sort()
+        #print(citations)
+        n=len(citations)
+        for i in range(n-1,-1,-1):
+            x=citations[i]
+            if x <= len(citations[i:]):
+                return x
+
+
+
+class Solution:
+  def hIndex(self, citations: List[int]) -> int:
+    n = len(citations)
+
+    citations.sort()
+
+    for i, citation in enumerate(citations):
+      if citation >= n - i:
+        return n - i
+
+    return 0
