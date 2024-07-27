@@ -1,0 +1,21 @@
+class Solution(object):
+    def convert_string(self, s):
+        # Use list comprehension to filter out non-alphanumeric characters and convert to lowercase
+        filtered_chars = [char.lower() for char in s if char.isalnum()]
+        # Join the list of characters into a single string
+        return ''.join(filtered_chars)
+    
+    def isPalindrome(self, s):
+        """
+        :type s: str
+        :rtype: bool
+        """
+        s = self.convert_string(s)
+        n = len(s)
+        l, r = 0, n - 1
+        while l < r:
+            if s[l] != s[r]:
+                return False
+            l += 1
+            r -= 1
+        return True
