@@ -1,0 +1,27 @@
+class Solution(object):
+    def strStr(self, haystack, needle):
+        """
+        :type haystack: str
+        :type needle: str
+        :rtype: int
+        """
+        
+        n = len(haystack)
+        m = len(needle)
+
+        if n==1 and m==1:
+                return 0
+        
+        
+        for i in range(0,n):
+            if haystack[i:i+m] == needle:
+                return i 
+        return -1
+
+
+
+
+haystack = "sadbutsad"
+needle = "sad"
+sol=Solution()
+print(sol.strStr(haystack,needle))
