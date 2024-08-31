@@ -1,0 +1,32 @@
+class Solution(object):
+
+    def product_of_list(self, lst):
+        product = 1
+        for num in lst:
+            product *= num
+        return product
+
+
+    def productExceptSelf(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: List[int]
+        """
+        ans = []
+        n=len(nums)
+
+        if n==0:
+            return ans
+        
+        for i in range(0,n):
+            subarr=nums[0:i]+nums[i+1:]
+            rep=self.product_of_list(subarr)
+            ans.append(rep)
+
+        return ans
+
+
+
+nums = [1,2,3,4]       
+sol = Solution()
+print(sol.productExceptSelf(nums))
