@@ -1,0 +1,18 @@
+def longestCommonPrefix(strs):
+    if not strs:
+        return ""
+    
+    # Start with the first string as the initial prefix
+    prefix = strs[0]
+    
+    # Compare the prefix with each string in the list
+    for string in strs[1:]:
+        # Check the current prefix with the current string
+        while string.find(prefix) != 0:
+            # If the prefix is not found at the start, shorten it
+            prefix = prefix[:-1]
+            # If the prefix is reduced to nothing, return an empty string
+            if not prefix:
+                return ""
+    
+    return prefix
