@@ -1,0 +1,17 @@
+class Solution(object):
+    def reverseWords(self, s):
+        """
+        :type s: str
+        :rtype: str
+        """
+        words = s.split()  # Split the string into a list of words
+        words.reverse()     # Reverse the list of words
+
+        ans = " ".join(words)  # Join the words back into a string with spaces between them
+        
+        return ans  # Return the reversed string
+
+
+s = "the sky is blue"        
+sol = Solution()
+print(sol.reverseWords(s))
