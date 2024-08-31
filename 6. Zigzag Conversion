@@ -1,0 +1,34 @@
+class Solution(object):
+    def convert(self, s, numRows):
+        """
+        :type s: str
+        :type numRows: int
+        :rtype: str
+        """
+        if numRows == 1 or numRows >= len(s):
+            return s
+
+        # Initialize a list with empty strings, one for each row
+        arr = [''] * numRows
+        index = 0
+        step = 1
+
+        for char in s:
+            arr[index] += char  # Append the current character to the appropriate row
+            
+            # Change direction when you reach the top or bottom row
+            if index == 0:
+                step = 1
+            elif index == numRows - 1:
+                step = -1
+            
+            index += step
+        
+        # Combine all rows to form the final string
+        return ''.join(arr)
+
+# Example usage
+s = "PAYPALISHIRING"
+numRows = 3
+sol = Solution()
+print(sol.convert(s, numRows))
