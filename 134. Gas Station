@@ -1,0 +1,34 @@
+class Solution(object):
+    def canCompleteCircuit(self, gas, cost):
+        """
+        :type gas: List[int]
+        :type cost: List[int]
+        :rtype: int
+        """
+        total_gas = total_cost = 0
+        tank = 0
+        start = 0
+        
+        for i in range(len(gas)):
+            total_gas += gas[i]
+            total_cost += cost[i]
+            tank += gas[i] - cost[i]
+            
+            # If tank is negative, we can't start from previous start point
+            if tank < 0:
+                # Reset start point to the next station
+                start = i + 1
+                # Reset tank
+                tank = 0
+        
+        # If the total gas is less than total cost, we cannot complete the circuit
+        if total_gas < total_cost:
+            return -1
+        else:
+            return start
+
+# Test the function
+gas = [1, 2, 3, 4, 5]
+cost = [3, 4, 5, 1, 2]
+sol = Solution()
+print(sol.canCompleteCircuit(gas, cost))  # Expected Output: 3
