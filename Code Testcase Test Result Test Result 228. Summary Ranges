@@ -1,0 +1,31 @@
+class Solution(object):
+    def summaryRanges(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: List[str]
+        """
+        rng = []
+        if not nums:
+            return rng
+
+        i = 0
+        while i < len(nums):
+            r1 = nums[i]
+            # Move `i` to the end of the current range
+            while i < len(nums) - 1 and nums[i] + 1 == nums[i + 1]:
+                i += 1
+            r2 = nums[i]
+            # Add the range to the result
+            if r1 == r2:
+                rng.append(str(r1))
+            else:
+                rng.append(f"{r1}->{r2}")
+            # Move to the next starting point
+            i += 1
+
+        return rng
+
+# Test
+nums = [0, 1, 2, 4, 5, 7]
+sol = Solution()
+print(sol.summaryRanges(nums))
