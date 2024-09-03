@@ -1,0 +1,59 @@
+class Solution(object):
+
+    def check_numbers_not_repeating(self, strings_list):
+        for s in strings_list:
+            digits_seen = set()
+            for char in s:
+                if char.isdigit():
+                    if char in digits_seen:
+                        return False  # Number is repeating
+                    digits_seen.add(char)
+        return True
+    
+    def get_3x3_boxes(self, board):
+        boxes = []
+        for box_row in range(0, 9, 3):
+            for box_col in range(0, 9, 3):
+                box = []
+                for i in range(3):
+                    for j in range(3):
+                        box.append(board[box_row + i][box_col + j])
+                boxes.append("".join(box))
+        return boxes
+
+    def isValidSudoku(self, board):
+        """
+        :type board: List[List[str]]
+        :rtype: bool
+        """
+
+        # Check each row
+        for row in board:
+            if not self.check_numbers_not_repeating(["".join(row)]):
+                return False
+            
+        # Transpose the board and check each column
+        transpose_board = [[board[row][col] for row in range(len(board))] for col in range(len(board[0]))]
+        for col in transpose_board:
+            if not self.check_numbers_not_repeating(["".join(col)]):
+                return False
+            
+        # Check each 3x3 grid
+        boxes = self.get_3x3_boxes(board)
+        return self.check_numbers_not_repeating(boxes)
+
+
+
+   
+
+board = [["5","3",".",".","7",".",".",".","."]
+,["6",".",".","1","9","5",".",".","."]
+,[".","9","8",".",".",".",".","6","."]
+,["8",".",".",".","6",".",".",".","3"]
+,["4",".",".","8",".","3",".",".","1"]
+,["7",".",".",".","2",".",".",".","6"]
+,[".","6",".",".",".",".","2","8","."]
+,[".",".",".","4","1","9",".",".","5"]
+,[".",".",".",".","8",".",".","7","9"]]
+sol = Solution()
+print(sol.isValidSudoku(board))  # Expected Output: 3
