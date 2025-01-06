@@ -1,0 +1,36 @@
+class Solution(object):
+    def sortedSquares(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: List[int]
+        """
+        pos = [x for x in nums if x >= 0]
+        neg = [x * -1 for x in nums if x < 0]
+        neg = neg[::-1]
+        return self.combine(pos, neg)
+    
+    def combine(self, a, b):
+        ans = []
+        i, j = 0, 0
+        n, m = len(a), len(b)
+        
+        # Merge two sorted lists (a and b) using two-pointer approach
+        while i < n and j < m:
+            if a[i] < b[j]:
+                ans.append(a[i] * a[i])
+                i += 1
+            else:
+                ans.append(b[j] * b[j])
+                j += 1
+        
+        # If there are remaining elements in 'a', add them
+        while i < n:
+            ans.append(a[i] * a[i])
+            i += 1
+        
+        # If there are remaining elements in 'b', add them
+        while j < m:
+            ans.append(b[j] * b[j])
+            j += 1
+            
+        return ans
