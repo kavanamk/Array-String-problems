@@ -1,0 +1,29 @@
+class Solution(object):
+    def findMaxAverage(self, nums, k):
+        """
+        :type nums: List[int]
+        :type k: int
+        :rtype: float
+        """
+        left=0
+        curr=0
+        cur_sum=0
+        
+        for i in range(k):
+            cur_sum+=nums[i]
+            
+        best_avg=cur_sum/k
+        
+        for right in range(k,len(nums)):
+            cur_sum+=nums[right]
+            cur_sum-=nums[left]
+            left+=1
+            best_avg=max(best_avg,cur_sum/k)
+        
+        return best_avg
+  
+    
+nums = [1,12,-5,-6,50,3]
+k = 4
+obj=Solution()
+print(obj.findMaxAverage(nums, k))
