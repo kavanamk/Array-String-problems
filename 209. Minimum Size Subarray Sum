@@ -1,0 +1,28 @@
+class Solution(object):
+    def minSubArrayLen(self, target, nums):
+        """
+        :type target: int
+        :type nums: List[int]
+        :rtype: int
+        """
+        left = 0
+        window_sum = 0
+        min_len = float('inf')  # Use infinity as the initial value for minimum length
+        
+        for right in range(len(nums)):
+            window_sum += nums[right]  # Expand the window by adding nums[right]
+            
+            # Shrink the window as long as the condition is met
+            while window_sum >= target:
+                min_len = min(min_len, right - left + 1)
+                window_sum -= nums[left]  # Shrink the window by removing nums[left]
+                left += 1
+        
+        # If no valid subarray was found, return 0
+        return min_len if min_len != float('inf') else 0
+
+# Example usage
+target = 7
+nums = [2, 3, 1, 2, 4, 3]
+obj = Solution()
+print(obj.minSubArrayLen(target, nums))  # Output: 2
