@@ -1,0 +1,22 @@
+class Solution(object):
+    def minStartValue(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: int
+        """
+        min_sum = 0
+        current_sum = 0
+
+        for num in nums:
+            current_sum += num
+            min_sum = min(min_sum, current_sum)
+            
+        print(min_sum)
+
+        # To ensure all step values are >= 1, the starting value should be at least 1 - min_sum
+        return 1 - min_sum
+
+# Example usage
+nums = [-3, 2, -3, 4, 2]
+obj = Solution()
+print(obj.minStartValue(nums))  # Output: 5
