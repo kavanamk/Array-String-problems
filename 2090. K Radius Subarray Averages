@@ -1,0 +1,34 @@
+class Solution(object):
+    def getAverages(self, nums, k):
+        """
+        :type nums: List[int]
+        :type k: int
+        :rtype: List[int]
+        """
+        avg_denom= k*2+1
+        n=len(nums)
+        left=-k
+        center=0
+        right=k
+        avg_arr =[0]*n
+        i=0
+        
+        while center <n:
+            if left<0 or right>=n:
+                avg_arr[i]=-1
+                
+            else:
+                avg_arr[i]=sum(nums[left:right+1])//avg_denom
+                
+            i+=1
+            left+=1
+            center+=1
+            right+=1
+            
+        return avg_arr
+
+# Example usage
+nums = [7,4,3,9,1,8,5,2,6]
+k=3
+obj = Solution()
+print(obj.getAverages(nums, k))  # Output: 5
