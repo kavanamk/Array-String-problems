@@ -19,3 +19,26 @@ class Solution(object):
             l += 1
             r -= 1
         return True
+
+
+def is_palindrome(s):
+  
+  # Replace this placeholder return statement with your code
+  p1=0
+  p2=len(s)-1
+  if len(s)==0 or len(s)==1:
+    return True
+  
+  while p1!=p2:
+    
+    if s[p1]!=s[p2]:
+      return False
+    else:
+      p1+=1
+      p2-=1
+      
+    
+  return True
+
+
+print(is_palindrome("kaYak"))
