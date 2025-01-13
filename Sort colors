@@ -1,0 +1,20 @@
+def sort_colors(colors):
+    
+  # Replace this placeholder return statement with your code  
+  p0,p,p2=0,0,len(colors)-1
+  
+  while p<=p2:
+    if colors[p]==0:
+      #swap
+      colors[p],colors[p0]=colors[p0],colors[p]
+      p+=1
+      p0+=1
+      
+    elif colors[p]==1:
+      p+=1
+    
+    else:
+      colors[p],colors[p2]=colors[p2],colors[p]
+      p2-=1
+       
+  return colors
